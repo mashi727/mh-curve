@@ -1,0 +1,227 @@
+<svg width="779.0" height="748.8" viewBox="0 0 779.0 748.8" xmlns="http://www.w3.org/2000/svg">
+    <title>
+        臨界状態モデルの磁化を、@確かめられる形で描く
+	:comment 課題：計算の原典は N88-BASIC にしか無い
+	:comment 方針：原典を移植し、@独立な解法で突き合わせる
+	条件を決める
+		:if 論文の図を再現するか
+			プリセットから@図と条件を選ぶ
+		:else
+			k, B₀, ΔH, Hc1 と@Hac, Hdc, a を入れる
+	磁化を計算する
+		:switch どの解法で解くか
+		:case 解析解
+			HA の大きさで場合分けし@段ごとの閉じた式で求める
+		:case 数値解
+			表面は幅 ΔH のプレイ作用素、@内部は Kim 則の包絡で更新する
+		:comment 両者の一致を自動テストで確かめる
+	:switch 何を見るか
+	:case M–H
+		初期磁化曲線と@1 周期のループを描く
+	:case χn(t)
+		t を掃いてループを求め、@高調波の係数を取り出す
+	:while 比べたい曲線が残っているか
+		計算結果を保存し@表示リストに加える
+		色・凡例・パネルを決める
+	表示リストを保存して@図を再現できるようにする
+	余白を詰めた PDF に書き出す
+	:terminal LuaTeX に原寸で取り込む
+    </title>
+    <rect x="0" y="0" width="779.0" height="748.8" fill="#ffffff"/>
+    <g transform="translate(20.0, 20.0)">
+        <g transform="translate(0.0, 0.0)">
+            <rect x="0" y="0" width="176.0" height="51.2" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+            <text x="10.0" y="23.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                臨界状態モデルの磁化を、
+            </text>
+            <text x="10.0" y="23.0" dy="15.6" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                確かめられる形で描く
+            </text>
+            <g transform="translate(196.0, 0.0)">
+                <g transform="translate(0.0, 0.0)">
+                    <text x="10.0" y="13.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                        (課題：計算の原典は N88-BASIC にしか無い)
+                    </text>
+                </g>
+                <line x1="0.0" y1="0.0" x2="0.0" y2="56.8" stroke="#142850" stroke-width="1.0"/>
+                <g transform="translate(0.0, 25.6)">
+                    <text x="10.0" y="13.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                        (方針：原典を移植し、
+                    </text>
+                    <text x="10.0" y="13.0" dy="15.6" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                        独立な解法で突き合わせる)
+                    </text>
+                </g>
+                <line x1="0.0" y1="25.6" x2="0.0" y2="102.4" stroke="#142850" stroke-width="1.0"/>
+                <g transform="translate(0.0, 66.8)">
+                    <rect x="0" y="0" width="98.0" height="35.6" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                    <text x="10.0" y="23.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                        条件を決める
+                    </text>
+                    <g transform="translate(118.0, 0.0)">
+                        <g transform="translate(190.0, 0.0)">
+                            <rect x="0" y="0" width="111.0" height="51.2" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                            <text x="10.0" y="23.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                                プリセットから
+                            </text>
+                            <text x="10.0" y="23.0" dy="15.6" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                                図と条件を選ぶ
+                            </text>
+                        </g>
+                        <line x1="170.0" y1="0.0" x2="190.0" y2="0.0" stroke="#142850" stroke-width="1.0"/>
+                        <g transform="translate(190.0, 61.2)">
+                            <rect x="0" y="0" width="149.8" height="51.2" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                            <text x="10.0" y="23.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                                k, B₀, ΔH, Hc1 と
+                            </text>
+                            <text x="10.0" y="23.0" dy="15.6" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                                Hac, Hdc, a を入れる
+                            </text>
+                        </g>
+                        <line x1="170.0" y1="61.2" x2="190.0" y2="61.2" stroke="#142850" stroke-width="1.0"/>
+                        <polygon points="0.0,0.0 170.0,0.0 150.0,30.6 170.0,61.2 0.0,61.2" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                        <text x="145.0" y="18.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850"></text>
+                        <text x="145.0" y="53.6" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850"></text>
+                        <text x="5.0" y="35.8" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                            論文の図を再現するか
+                        </text>
+                    </g>
+                    <line x1="98.0" y1="0.0" x2="118.0" y2="0.0" stroke="#142850" stroke-width="1.0"/>
+                </g>
+                <line x1="0.0" y1="66.8" x2="0.0" y2="224.8" stroke="#142850" stroke-width="1.0"/>
+                <g transform="translate(0.0, 189.2)">
+                    <rect x="0" y="0" width="111.0" height="35.6" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                    <text x="10.0" y="23.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                        磁化を計算する
+                    </text>
+                    <g transform="translate(131.0, 0.0)">
+                        <g transform="translate(0.0, 0.0)">
+                            <g transform="translate(203.0, 0.0)">
+                                <rect x="0" y="0" width="176.0" height="51.2" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                                <text x="10.0" y="23.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                                    HA の大きさで場合分けし
+                                </text>
+                                <text x="10.0" y="23.0" dy="15.6" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                                    段ごとの閉じた式で求める
+                                </text>
+                            </g>
+                            <line x1="183.0" y1="0.0" x2="203.0" y2="0.0" stroke="#142850" stroke-width="1.0"/>
+                            <g transform="translate(203.0, 61.2)">
+                                <rect x="0" y="0" width="209.0" height="51.2" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                                <text x="10.0" y="23.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                                    表面は幅 ΔH のプレイ作用素、
+                                </text>
+                                <text x="10.0" y="23.0" dy="15.6" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                                    内部は Kim 則の包絡で更新する
+                                </text>
+                            </g>
+                            <line x1="183.0" y1="61.2" x2="203.0" y2="61.2" stroke="#142850" stroke-width="1.0"/>
+                            <polygon points="0.0,0.0 183.0,0.0 163.0,30.6 183.0,61.2 0.0,61.2" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                            <text x="119.0" y="18.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                                解析解
+                            </text>
+                            <text x="119.0" y="53.6" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                                数値解
+                            </text>
+                            <text x="5.0" y="35.8" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                                どの解法で解くか
+                            </text>
+                        </g>
+                        <line x1="0.0" y1="0.0" x2="0.0" y2="138.0" stroke="#142850" stroke-width="1.0"/>
+                        <g transform="translate(0.0, 122.4)">
+                            <text x="10.0" y="13.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                                (両者の一致を自動テストで確かめる)
+                            </text>
+                        </g>
+                    </g>
+                    <line x1="111.0" y1="0.0" x2="131.0" y2="0.0" stroke="#142850" stroke-width="1.0"/>
+                </g>
+                <line x1="0.0" y1="189.2" x2="0.0" y2="398.4" stroke="#142850" stroke-width="1.0"/>
+                <g transform="translate(0.0, 337.2)">
+                    <g transform="translate(160.4, 0.0)">
+                        <rect x="0" y="0" width="149.9" height="51.2" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                        <text x="10.0" y="23.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                            初期磁化曲線と
+                        </text>
+                        <text x="10.0" y="23.0" dy="15.6" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                            1 周期のループを描く
+                        </text>
+                    </g>
+                    <line x1="140.4" y1="0.0" x2="160.4" y2="0.0" stroke="#142850" stroke-width="1.0"/>
+                    <g transform="translate(160.4, 61.2)">
+                        <rect x="0" y="0" width="172.4" height="51.2" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                        <text x="10.0" y="23.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                            t を掃いてループを求め、
+                        </text>
+                        <text x="10.0" y="23.0" dy="15.6" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                            高調波の係数を取り出す
+                        </text>
+                    </g>
+                    <line x1="140.4" y1="61.2" x2="160.4" y2="61.2" stroke="#142850" stroke-width="1.0"/>
+                    <polygon points="0.0,0.0 140.4,0.0 120.4,30.6 140.4,61.2 0.0,61.2" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                    <text x="86.5" y="18.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                        M–H
+                    </text>
+                    <text x="80.0" y="53.6" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                        χn(t)
+                    </text>
+                    <text x="5.0" y="35.8" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                        何を見るか
+                    </text>
+                </g>
+                <line x1="0.0" y1="337.2" x2="0.0" y2="495.2" stroke="#142850" stroke-width="1.0"/>
+                <g transform="translate(0.0, 459.6)">
+                    <rect x="0" y="0" width="189.0" height="35.6" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                    <line x1="5.0" y1="0.0" x2="5.0" y2="35.6" stroke="#142850" stroke-width="1.0"/>
+                    <text x="10.0" y="23.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                        比べたい曲線が残っているか
+                    </text>
+                    <g transform="translate(209.0, 0.0)">
+                        <g transform="translate(0.0, 0.0)">
+                            <rect x="0" y="0" width="137.0" height="51.2" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                            <text x="10.0" y="23.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                                計算結果を保存し
+                            </text>
+                            <text x="10.0" y="23.0" dy="15.6" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                                表示リストに加える
+                            </text>
+                        </g>
+                        <line x1="0.0" y1="0.0" x2="0.0" y2="96.8" stroke="#142850" stroke-width="1.0"/>
+                        <g transform="translate(0.0, 61.2)">
+                            <rect x="0" y="0" width="176.0" height="35.6" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                            <text x="10.0" y="23.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                                色・凡例・パネルを決める
+                            </text>
+                        </g>
+                    </g>
+                    <line x1="189.0" y1="0.0" x2="209.0" y2="0.0" stroke="#142850" stroke-width="1.0"/>
+                </g>
+                <line x1="0.0" y1="459.6" x2="0.0" y2="617.6" stroke="#142850" stroke-width="1.0"/>
+                <g transform="translate(0.0, 566.4)">
+                    <rect x="0" y="0" width="176.0" height="51.2" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                    <text x="10.0" y="23.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                        表示リストを保存して
+                    </text>
+                    <text x="10.0" y="23.0" dy="15.6" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                        図を再現できるようにする
+                    </text>
+                </g>
+                <line x1="0.0" y1="566.4" x2="0.0" y2="663.2" stroke="#142850" stroke-width="1.0"/>
+                <g transform="translate(0.0, 627.6)">
+                    <rect x="0" y="0" width="197.9" height="35.6" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                    <text x="10.0" y="23.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                        余白を詰めた PDF に書き出す
+                    </text>
+                </g>
+                <line x1="0.0" y1="627.6" x2="0.0" y2="691.0" stroke="#142850" stroke-width="1.0"/>
+                <g transform="translate(0.0, 673.2)">
+                    <rect x="0" y="0" width="192.7" height="35.6" rx="17.8" ry="17.8" stroke="#142850" stroke-width="1.0" fill="#ffffff"/>
+                    <text x="17.8" y="23.0" dy="0.0" font-family="Hiragino Sans" font-size="13" fill="#142850">
+                        LuaTeX に原寸で取り込む
+                    </text>
+                </g>
+            </g>
+            <line x1="176.0" y1="0.0" x2="196.0" y2="0.0" stroke="#142850" stroke-width="1.0"/>
+        </g>
+    </g>
+</svg>
